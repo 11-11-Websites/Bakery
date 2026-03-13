@@ -67,40 +67,28 @@
     .brand {
       display: flex;
       align-items: center;
-      gap: 0.6rem;
+      gap: 0.9rem; /* slightly larger gap for a stronger header block */
     }
 
-    /* Logo image */
+    /* Bigger, more attractive logo */
     .brand-logo-img {
-      width: 46px;
-      height: 46px;
+      width: 64px;
+      height: 64px;
       border-radius: 50%;
       object-fit: cover;
-      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.25);
       background: radial-gradient(circle at 30% 30%, #ffffff, var(--primary));
-    }
-
-    /* Optional fallback RT circle (remove if not needed) */
-    .logo {
-      width: 42px;
-      height: 42px;
-      border-radius: 50%;
-      background: radial-gradient(circle at 30% 30%, #ffffff, var(--primary));
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-weight: 700;
-      color: #2b2135;
-      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
     }
 
     .brand-text h1 {
-      font-size: 1.3rem;
-      letter-spacing: 1px;
+      font-size: 1.7rem;       /* larger site name */
+      letter-spacing: 1.5px;
+      font-weight: 800;
+      color: #2b2135;
     }
 
     .brand-text span {
-      font-size: 0.8rem;
+      font-size: 0.9rem;       /* slightly larger subtitle */
       color: var(--text-soft);
     }
 
@@ -663,8 +651,12 @@
   <header>
     <div class="container nav">
       <div class="brand">
-        <!-- Logo image in repo: /images/reveuse-logo.png -->
-        <img src="images/reveuse-logo.png" alt="Reveuse Treats logo" class="brand-logo-img" />
+        <!-- Logo from GitHub -->
+        <img
+          src="https://github.com/11-11-Websites/Bakery/blob/main/images/reveuse-logo.jpg?raw=true"
+          alt="Reveuse Treats logo"
+          class="brand-logo-img"
+        />
         <div class="brand-text">
           <h1>Reveuse Treats</h1>
           <span>Home bakery · Pre-orders only · Customisation available</span>
@@ -723,6 +715,11 @@
         <div class="hero-tag">
           <span>🎀</span>
           <span>Signature pastel custom cakes</span>
+	  <img
+    		src="https://github.com/11-11-Websites/Bakery/blob/main/images/Pastel.jpg?raw=true"
+    		alt="Signature pastel custom cake"
+    		class="hero-tag-img"
+  	  />
         </div>
       </div>
     </div>
@@ -904,44 +901,203 @@
 
   // ---------- Category items + WhatsApp order ----------
 
-  // Product data with images (files expected under /images/... in your GitHub repo)
   const CATEGORY_ITEMS = {
     halfKgCakes: [
-      { name: "Half KG Vanilla Cake", desc: "Soft vanilla sponge with simple frosting.", price: "₹350", img: "images/halfkg/vanilla.jpg" },
-      { name: "Half KG Strawberry Cake", desc: "Strawberry flavoured cake with cream frosting.", price: "₹350", img: "images/halfkg/strawberry.jpg" },
-      { name: "Half KG Pineapple Cake", desc: "Refreshing pineapple flavour with bits and cream.", price: "₹400", img: "images/halfkg/pineapple.jpg" },
-      { name: "Half KG Blackcurrant Cake", desc: "Fruity blackcurrant cake with a pretty finish.", price: "₹400", img: "images/halfkg/blackcurrant.jpg" },
-      { name: "Half KG Blueberry Cake", desc: "Blueberry cake with tangy-sweet notes.", price: "₹450", img: "images/halfkg/blueberry.jpg" },
-      { name: "Half KG Butterscotch Cake", desc: "Butterscotch cake with crunchy bits and caramel.", price: "₹450", img: "images/halfkg/butterscotch.jpg" },
-      { name: "Half KG Choco Truffle Cake", desc: "Rich chocolate sponge with truffle ganache.", price: "₹450", img: "images/halfkg/choco-truffle.jpg" },
-      { name: "Half KG Dutch Chocolate Cake", desc: "Intense Dutch cocoa chocolate cake.", price: "₹500", img: "images/halfkg/dutch-chocolate.jpg" },
-      { name: "Half KG Chocolate Strawberry Cake", desc: "Chocolate base with strawberry cream layers.", price: "₹500", img: "images/halfkg/choco-strawberry.jpg" },
-      { name: "Half KG Chocolate Caramel Cake", desc: "Chocolate cake with caramel layers and drizzle.", price: "₹500", img: "images/halfkg/choco-caramel.jpg" },
-      { name: "Half KG Mocha Chocolate Cake", desc: "Coffee and chocolate flavour combo for mocha lovers.", price: "₹550", img: "images/halfkg/mocha-chocolate.jpg" },
-      { name: "Half KG Red Velvet Cake", desc: "Classic red velvet cake with cream style frosting.", price: "₹550", img: "images/halfkg/red-velvet.jpg" },
-      { name: "Half KG Rainbow Cake", desc: "Colourful layered sponge cake for fun celebrations.", price: "₹550", img: "images/halfkg/rainbow.jpg" },
-      { name: "Half KG Black Forest Cake", desc: "Chocolate, cream and cherries in a classic combo.", price: "₹450", img: "images/halfkg/black-forest.jpg" },
-      { name: "Half KG White Forest Cake", desc: "Vanilla, cream and cherries with a light finish.", price: "₹450", img: "images/halfkg/white-forest.jpg" }
+      {
+        name: "Half KG Vanilla Cake",
+        desc: "Soft vanilla sponge with simple frosting.",
+        price: "₹350",
+        img: "https://github.com/11-11-Websites/Bakery/blob/main/images/halfkg/Vanilla.jpg?raw=true"
+      },
+      {
+        name: "Half KG Strawberry Cake",
+        desc: "Strawberry flavoured cake with cream frosting.",
+        price: "₹350",
+        img: "https://github.com/11-11-Websites/Bakery/blob/main/images/halfkg/Strawberryy.jpg?raw=true"
+      },
+      {
+        name: "Half KG Pineapple Cake",
+        desc: "Refreshing pineapple flavour with bits and cream.",
+        price: "₹400",
+        img: "https://github.com/11-11-Websites/Bakery/blob/main/images/halfkg/Exotic%20Pineapple%20Cake.jpeg?raw=true"
+      },
+      {
+        name: "Half KG Blackcurrant Cake",
+        desc: "Fruity blackcurrant cake with a pretty finish.",
+        price: "₹400",
+        img: "https://github.com/11-11-Websites/Bakery/blob/main/images/halfkg/Blackcurrant.jpg?raw=true"
+      },
+      {
+        name: "Half KG Blueberry Cake",
+        desc: "Blueberry cake with tangy-sweet notes.",
+        price: "₹450",
+        img: "https://github.com/11-11-Websites/Bakery/blob/main/images/halfkg/Blueberry.jpg?raw=true"
+      },
+      {
+        name: "Half KG Butterscotch Cake",
+        desc: "Butterscotch cake with crunchy bits and caramel.",
+        price: "₹450",
+        img: "https://github.com/11-11-Websites/Bakery/blob/main/images/halfkg/Butterscotch.jpg?raw=true"
+      },
+      {
+        name: "Half KG Choco Truffle Cake",
+        desc: "Rich chocolate sponge with truffle ganache.",
+        price: "₹450",
+        img: "https://github.com/11-11-Websites/Bakery/blob/main/images/halfkg/choco%20truffle.jpg?raw=true"
+      },
+      {
+        name: "Half KG Dutch Chocolate Cake",
+        desc: "Intense Dutch cocoa chocolate cake.",
+        price: "₹500",
+        img: "https://github.com/11-11-Websites/Bakery/blob/main/images/halfkg/Dutch%20Chocolate.jpg?raw=true"
+      },
+      {
+        name: "Half KG Chocolate Strawberry Cake",
+        desc: "Chocolate base with strawberry cream layers.",
+        price: "₹500",
+        img: "https://github.com/11-11-Websites/Bakery/blob/main/images/halfkg/chocolate%20strawberryy.jpg?raw=true"
+      },
+      {
+        name: "Half KG Chocolate Caramel Cake",
+        desc: "Chocolate cake with caramel layers and drizzle.",
+        price: "₹500",
+        img: "https://github.com/11-11-Websites/Bakery/blob/main/images/halfkg/chocolate%20caramel.jpg?raw=true"
+      },
+      {
+        name: "Half KG Mocha Chocolate Cake",
+        desc: "Coffee and chocolate flavour combo for mocha lovers.",
+        price: "₹550",
+        img: "https://github.com/11-11-Websites/Bakery/blob/main/images/halfkg/Chocolate%20Mocha.jpg?raw=true"
+      },
+      {
+        name: "Half KG Red Velvet Cake",
+        desc: "Classic red velvet cake with cream style frosting.",
+        price: "₹550",
+        img: "https://github.com/11-11-Websites/Bakery/blob/main/images/halfkg/red%20velvet.jpg?raw=true"
+      },
+      {
+        name: "Half KG Rainbow Cake",
+        desc: "Colourful layered sponge cake for fun celebrations.",
+        price: "₹550",
+        img: "https://github.com/11-11-Websites/Bakery/blob/main/images/halfkg/rainbow%20cake.jpg?raw=true"
+      },
+      {
+        name: "Half KG Black Forest Cake",
+        desc: "Chocolate, cream and cherries in a classic combo.",
+        price: "₹450",
+        img: "https://github.com/11-11-Websites/Bakery/blob/main/images/halfkg/Black%20Forest.jpg?raw=true"
+      },
+      {
+        name: "Half KG White Forest Cake",
+        desc: "Vanilla, cream and cherries with a light finish.",
+        price: "₹450",
+        img: "https://github.com/11-11-Websites/Bakery/blob/main/images/halfkg/White%20Forest.jpg?raw=true"
+      }
     ],
 
     oneKgCakes: [
-      { name: "1 KG Vanilla Cake", desc: "Soft vanilla sponge with simple frosting.", price: "₹550", img: "images/1kg/vanilla.jpg" },
-      { name: "1 KG Strawberry Cake", desc: "Strawberry flavoured cake with cream frosting.", price: "₹550", img: "images/1kg/strawberry.jpg" },
-      { name: "1 KG Pineapple Cake", desc: "Refreshing pineapple flavour with bits and cream.", price: "₹600", img: "images/1kg/pineapple.jpg" },
-      { name: "1 KG Blackcurrant Cake", desc: "Fruity blackcurrant cake with a pretty finish.", price: "₹600", img: "images/1kg/blackcurrant.jpg" },
-      { name: "1 KG Blueberry Cake", desc: "Blueberry cake with tangy-sweet notes.", price: "₹650", img: "images/1kg/blueberry.jpg" },
-      { name: "1 KG Butterscotch Cake", desc: "Butterscotch cake with crunchy bits and caramel.", price: "₹650", img: "images/1kg/butterscotch.jpg" },
-      { name: "1 KG Rose Milk Cake", desc: "Delicate rose milk flavoured cake with a pastel finish.", price: "₹650", img: "images/1kg/rosemilk.jpg" },
-      { name: "1 KG Choc Truffle Cake", desc: "Rich chocolate sponge with truffle ganache.", price: "₹750", img: "images/1kg/choco-truffle.jpg" },
-      { name: "1 KG Black Forest Cake", desc: "Chocolate, cream and cherries in a classic combo.", price: "₹650", img: "images/1kg/black-forest.jpg" },
-      { name: "1 KG White Forest Cake", desc: "Vanilla, cream and cherries with a light finish.", price: "₹700", img: "images/1kg/white-forest.jpg" },
-      { name: "1 KG Dutch Chocolate Cake", desc: "Intense Dutch cocoa chocolate cake.", price: "₹800", img: "images/1kg/dutch-chocolate.jpg" },
-      { name: "1 KG Chocolate Strawberry Cake", desc: "Chocolate base with strawberry cream layers.", price: "₹800", img: "images/1kg/choco-strawberry.jpg" },
-      { name: "1 KG Chocolate Caramel Cake", desc: "Chocolate cake with caramel layers and drizzle.", price: "₹800", img: "images/1kg/choco-caramel.jpg" },
-      { name: "1 KG Mocha Chocolate Cake", desc: "Coffee and chocolate flavour combo for mocha lovers.", price: "₹900", img: "images/1kg/mocha-chocolate.jpg" },
-      { name: "1 KG Red Velvet Cake", desc: "Classic red velvet cake with cream style frosting.", price: "₹900", img: "images/1kg/red-velvet.jpg" },
-      { name: "1 KG Rainbow Cake", desc: "Colourful layered sponge cake for fun celebrations.", price: "₹900", img: "images/1kg/rainbow.jpg" },
-      { name: "1 KG Rasmalai Cake", desc: "Indian fusion rasmalai cake soaked in flavoured milk.", price: "₹900", img: "images/1kg/rasmalai.jpg" }
+      {
+        name: "1 KG Vanilla Cake",
+        desc: "Soft vanilla sponge with simple frosting.",
+        price: "₹550",
+        img: "https://github.com/11-11-Websites/Bakery/blob/main/images/1kg/Vanilla.jpg?raw=true"
+      },
+      {
+        name: "1 KG Strawberry Cake",
+        desc: "Strawberry flavoured cake with cream frosting.",
+        price: "₹550",
+        img: "https://github.com/11-11-Websites/Bakery/blob/main/images/1kg/Strawberryy.jpg?raw=true"
+      },
+      {
+        name: "1 KG Pineapple Cake",
+        desc: "Refreshing pineapple flavour with bits and cream.",
+        price: "₹600",
+        img: "https://github.com/11-11-Websites/Bakery/blob/main/images/1kg/Exotic%20Pineapple%20Cake.jpeg?raw=true"
+      },
+      {
+        name: "1 KG Blackcurrant Cake",
+        desc: "Fruity blackcurrant cake with a pretty finish.",
+        price: "₹600",
+        img: "https://github.com/11-11-Websites/Bakery/blob/main/images/1kg/Blackcurrant.jpg?raw=true"
+      },
+      {
+        name: "1 KG Blueberry Cake",
+        desc: "Blueberry cake with tangy-sweet notes.",
+        price: "₹650",
+        img: "https://github.com/11-11-Websites/Bakery/blob/main/images/1kg/Blueberry.jpg?raw=true"
+      },
+      {
+        name: "1 KG Butterscotch Cake",
+        desc: "Butterscotch cake with crunchy bits and caramel.",
+        price: "₹650",
+        img: "https://github.com/11-11-Websites/Bakery/blob/main/images/1kg/Butterscotch.jpg?raw=true"
+      },
+      {
+        name: "1 KG Rose Milk Cake",
+        desc: "Delicate rose milk flavoured cake with a pastel finish.",
+        price: "₹650",
+        img: "https://github.com/11-11-Websites/Bakery/blob/main/images/1kg/rose%20milk.jpg?raw=true"
+      },
+      {
+        name: "1 KG Choc Truffle Cake",
+        desc: "Rich chocolate sponge with truffle ganache.",
+        price: "₹750",
+        img: "https://github.com/11-11-Websites/Bakery/blob/main/images/1kg/choco%20truffle.jpg?raw=true"
+      },
+      {
+        name: "1 KG Black Forest Cake",
+        desc: "Chocolate, cream and cherries in a classic combo.",
+        price: "₹650",
+        img: "https://github.com/11-11-Websites/Bakery/blob/main/images/1kg/Black%20Forest.jpg?raw=true"
+      },
+      {
+        name: "1 KG White Forest Cake",
+        desc: "Vanilla, cream and cherries with a light finish.",
+        price: "₹700",
+        img: "https://github.com/11-11-Websites/Bakery/blob/main/images/1kg/White%20Forest.jpg?raw=true"
+      },
+      {
+        name: "1 KG Dutch Chocolate Cake",
+        desc: "Intense Dutch cocoa chocolate cake.",
+        price: "₹800",
+        img: "https://github.com/11-11-Websites/Bakery/blob/main/images/1kg/Dutch%20Chocolate.jpg?raw=true"
+      },
+      {
+        name: "1 KG Chocolate Strawberry Cake",
+        desc: "Chocolate base with strawberry cream layers.",
+        price: "₹800",
+        img: "https://github.com/11-11-Websites/Bakery/blob/main/images/1kg/chocolate%20strawberryy.jpg?raw=true"
+      },
+      {
+        name: "1 KG Chocolate Caramel Cake",
+        desc: "Chocolate cake with caramel layers and drizzle.",
+        price: "₹800",
+        img: "https://github.com/11-11-Websites/Bakery/blob/main/images/1kg/chocolate%20caramel.jpg?raw=true"
+      },
+      {
+        name: "1 KG Mocha Chocolate Cake",
+        desc: "Coffee and chocolate flavour combo for mocha lovers.",
+        price: "₹900",
+        img: "https://github.com/11-11-Websites/Bakery/blob/main/images/1kg/Chocolate%20Mocha.jpg?raw=true"
+      },
+      {
+        name: "1 KG Red Velvet Cake",
+        desc: "Classic red velvet cake with cream style frosting.",
+        price: "₹900",
+        img: "https://github.com/11-11-Websites/Bakery/blob/main/images/1kg/red%20velvet.jpg?raw=true"
+      },
+      {
+        name: "1 KG Rainbow Cake",
+        desc: "Colourful layered sponge cake for fun celebrations.",
+        price: "₹900",
+        img: "https://github.com/11-11-Websites/Bakery/blob/main/images/1kg/rainbow%20cake.jpg?raw=true"
+      },
+      {
+        name: "1 KG Rasmalai Cake",
+        desc: "Indian fusion rasmalai cake soaked in flavoured milk.",
+        price: "₹900",
+        img: "https://github.com/11-11-Websites/Bakery/blob/main/images/1kg/Rasmalai.jpg?raw=true"
+      }
     ],
 
     brownies: [
@@ -949,7 +1105,7 @@
         name: "Classic Fudge Brownies (6 pcs)",
         desc: "Rich chocolate brownies with crackly top.",
         price: "From ₹449",
-        img: "images/brownies/classic-6.jpg"
+        img: "https://github.com/11-11-Websites/Bakery/blob/main/images/brownies/Brownie1.jpg?raw=true"
       }
     ],
 
@@ -958,19 +1114,19 @@
         name: "Cupcakes (Box of 4/6)",
         desc: "Flavours of your choice, pastel frosting. Prices vary by box size.",
         price: "Price on request",
-        img: "images/cupcakes/assorted.jpg"
+        img: "https://github.com/11-11-Websites/Bakery/blob/main/images/cupcakes/assorted.jpg?raw=true"
       },
       {
         name: "Bento Cakes",
         desc: "Mini cakes for 1–2 people, custom text and colours.",
         price: "Starting from ₹200",
-        img: "images/bento/bento-basic.jpg"
+        img: "https://github.com/11-11-Websites/Bakery/blob/main/images/brownies/Brownie1.jpg?raw=true"
       },
       {
         name: "Custom Celebration Orders",
         desc: "Special designs for parties, events and gifting.",
         price: "Price on request",
-        img: "images/custom/custom-orders.jpg"
+        img: "https://github.com/11-11-Websites/Bakery/blob/main/images/custom-orders/custom-orders.jpg?raw=true"
       }
     ]
   };

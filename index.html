@@ -1,0 +1,1071 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Reveuse Treats</title>
+  <style>
+    /* Global styles */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    body {
+      background: #faf6ff; /* light candy purple tint */
+      color: #2b2135;
+      line-height: 1.6;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    img {
+      max-width: 100%;
+      display: block;
+    }
+
+    /* Color palette: candy purple + white */
+    :root {
+      --primary: #c76bff;      /* candy purple */
+      --primary-dark: #a247df;
+      --primary-soft: #f4e5ff;
+      --accent: #ff9acb;       /* pink accent */
+      --text-soft: #8a6ca2;
+      --border-soft: #e1cfff;
+      --surface: #ffffff;
+    }
+
+    /* Container */
+    .container {
+      width: 90%;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    /* Header / Navbar */
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: #faf6ffea;
+      backdrop-filter: blur(6px);
+      border-bottom: 1px solid var(--border-soft);
+    }
+
+    .nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0.75rem 0;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+    }
+
+    /* Logo image */
+    .brand-logo-img {
+      width: 46px;
+      height: 46px;
+      border-radius: 50%;
+      object-fit: cover;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+      background: radial-gradient(circle at 30% 30%, #ffffff, var(--primary));
+    }
+
+    /* Optional fallback RT circle (remove if not needed) */
+    .logo {
+      width: 42px;
+      height: 42px;
+      border-radius: 50%;
+      background: radial-gradient(circle at 30% 30%, #ffffff, var(--primary));
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+      color: #2b2135;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+    }
+
+    .brand-text h1 {
+      font-size: 1.3rem;
+      letter-spacing: 1px;
+    }
+
+    .brand-text span {
+      font-size: 0.8rem;
+      color: var(--text-soft);
+    }
+
+    .nav-actions {
+      display: flex;
+      gap: 0.5rem;
+      flex-wrap: wrap;
+    }
+
+    .nav-btn {
+      display: flex;
+      align-items: center;
+      gap: 0.3rem;
+      padding: 0.4rem 0.75rem;
+      border-radius: 999px;
+      border: 1px solid var(--border-soft);
+      background: #ffffff;
+      font-size: 0.78rem;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+
+    .nav-btn span.icon {
+      font-size: 0.9rem;
+    }
+
+    .nav-btn:hover {
+      background: var(--primary-soft);
+      transform: translateY(-1px);
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.06);
+    }
+
+    /* Hero section */
+    .hero {
+      padding: 2.5rem 0 1.5rem;
+    }
+
+    .hero-inner {
+      display: grid;
+      grid-template-columns: minmax(0, 3fr) minmax(0, 2.5fr);
+      gap: 2rem;
+      align-items: center;
+    }
+
+    .hero-title {
+      font-size: 2.3rem;
+      margin-bottom: 0.75rem;
+    }
+
+    .hero-title span.accent {
+      color: var(--primary);
+    }
+
+    .hero-subtitle {
+      font-size: 0.95rem;
+      color: var(--text-soft);
+      margin-bottom: 1.2rem;
+    }
+
+    .hero-punch {
+      font-weight: 600;
+      margin-bottom: 1rem;
+    }
+
+    .hero-cta {
+      display: flex;
+      gap: 0.75rem;
+      flex-wrap: wrap;
+      margin-top: 0.75rem;
+    }
+
+    .btn-primary,
+    .btn-outline {
+      border-radius: 999px;
+      padding: 0.6rem 1.2rem;
+      font-size: 0.9rem;
+      cursor: pointer;
+      border: 1px solid transparent;
+      transition: all 0.2s ease;
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, var(--primary), var(--accent));
+      color: #fff;
+      border-color: var(--primary);
+      box-shadow: 0 8px 18px rgba(199, 107, 255, 0.35);
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 10px 22px rgba(199, 107, 255, 0.45);
+    }
+
+    .btn-outline {
+      background: transparent;
+      color: var(--primary-dark);
+      border-color: var(--primary);
+    }
+
+    .btn-outline:hover {
+      background: var(--primary-soft);
+    }
+
+    .hero-badge-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+      margin-top: 1.5rem;
+      font-size: 0.8rem;
+    }
+
+    .hero-badge {
+      background: #fff;
+      border-radius: 999px;
+      padding: 0.35rem 0.8rem;
+      border: 1px solid var(--border-soft);
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.03);
+    }
+
+    .hero-image {
+      background: radial-gradient(circle at 20% 20%, #ffffff, var(--primary-soft));
+      border-radius: 1.5rem;
+      padding: 1.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      overflow: hidden;
+      min-height: 220px;
+    }
+
+    .hero-image::after {
+      content: "";
+      position: absolute;
+      inset: 12%;
+      border-radius: 1.25rem;
+      border: 2px dashed rgba(255, 255, 255, 0.8);
+      pointer-events: none;
+    }
+
+    .hero-cake {
+      width: 70%;
+      height: 70%;
+      border-radius: 50%;
+      background: radial-gradient(circle at 30% 20%, #ffffff, #e4c5ff);
+      box-shadow: 0 18px 45px rgba(107, 60, 160, 0.5);
+      position: relative;
+    }
+
+    .hero-cake::before,
+    .hero-cake::after {
+      content: "";
+      position: absolute;
+      left: 12%;
+      right: 12%;
+      border-radius: 999px;
+    }
+
+    .hero-cake::before {
+      top: 25%;
+      height: 20%;
+      background: repeating-linear-gradient(
+        90deg,
+        #fef8ff 0,
+        #fef8ff 10px,
+        #f3baff 10px,
+        #f3baff 20px
+      );
+    }
+
+    .hero-cake::after {
+      top: 46%;
+      height: 22%;
+      background: #fef8ff;
+      border-top: 6px solid #e4c5ff;
+      border-bottom: 6px solid #e4c5ff;
+    }
+
+    .hero-tag {
+      position: absolute;
+      bottom: 1.2rem;
+      right: 1.2rem;
+      background: #faf6ff;
+      border-radius: 999px;
+      padding: 0.35rem 0.9rem;
+      font-size: 0.75rem;
+      display: flex;
+      align-items: center;
+      gap: 0.35rem;
+      box-shadow: 0 3px 10px rgba(0, 0, 0, 0.15);
+    }
+
+    /* Section base */
+    section {
+      padding: 2rem 0;
+    }
+
+    .section-header {
+      text-align: center;
+      margin-bottom: 1.5rem;
+    }
+
+    .section-title {
+      font-size: 1.6rem;
+      margin-bottom: 0.25rem;
+    }
+
+    .section-subtitle {
+      font-size: 0.9rem;
+      color: var(--text-soft);
+    }
+
+    /* Categories section */
+    .categories-grid {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 1rem;
+    }
+
+    .category-card {
+      background: linear-gradient(135deg, #c76bff, #ff9acb);
+      padding: 1rem;
+      border-radius: 0.9rem;
+      text-align: center;
+      border: 1px solid rgba(255, 255, 255, 0.4);
+      box-shadow: 0 3px 10px rgba(0, 0, 0, 0.08);
+      cursor: pointer;
+      transition: all 0.2s ease;
+      color: #ffffff;
+    }
+
+    .category-card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+    }
+
+    .category-icon {
+      width: 42px;
+      height: 42px;
+      border-radius: 999px;
+      margin: 0 auto 0.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.2rem;
+      background: rgba(255, 255, 255, 0.16);
+      color: #ffffff;
+    }
+
+    .category-name {
+      font-weight: 600;
+      margin-bottom: 0.25rem;
+      color: #ffffff;
+    }
+
+    .category-desc {
+      font-size: 0.78rem;
+      color: rgba(255, 255, 255, 0.9);
+    }
+
+    /* Items inside category */
+    .items-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+      gap: 1rem;
+    }
+
+    .item-card {
+      background: var(--surface);
+      border-radius: 0.9rem;
+      padding: 0.9rem;
+      border: 1px solid var(--border-soft);
+      box-shadow: 0 3px 10px rgba(0, 0, 0, 0.04);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      overflow: hidden;
+    }
+
+    .item-image-wrapper {
+      width: 100%;
+      height: 160px;
+      border-radius: 0.7rem;
+      overflow: hidden;
+      margin-bottom: 0.6rem;
+      background: #f6efff;
+    }
+
+    .item-image-wrapper img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.25s ease;
+    }
+
+    .item-card:hover .item-image-wrapper img {
+      transform: scale(1.04);
+    }
+
+    .item-name {
+      font-weight: 600;
+      margin-bottom: 0.3rem;
+    }
+
+    .item-desc {
+      font-size: 0.8rem;
+      color: var(--text-soft);
+      margin-bottom: 0.4rem;
+    }
+
+    .item-price {
+      font-size: 0.9rem;
+      margin-bottom: 0.6rem;
+    }
+
+    .item-price span {
+      font-weight: 600;
+      color: var(--primary-dark);
+    }
+
+    .item-actions {
+      margin-top: auto;
+      display: flex;
+      justify-content: flex-start;
+    }
+
+    /* About section */
+    .about-layout {
+      display: grid;
+      grid-template-columns: minmax(0, 3fr) minmax(0, 2.2fr);
+      gap: 2rem;
+      align-items: center;
+    }
+
+    .about-text p {
+      font-size: 0.95rem;
+      margin-bottom: 0.75rem;
+    }
+
+    .about-highlights {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 0.75rem;
+      margin-top: 0.75rem;
+      font-size: 0.78rem;
+    }
+
+    .about-pill {
+      background: var(--surface);
+      padding: 0.45rem 0.6rem;
+      border-radius: 0.75rem;
+      border: 1px dashed var(--border-soft);
+      text-align: center;
+    }
+
+    .about-card {
+      background: var(--surface);
+      padding: 1.2rem;
+      border-radius: 1rem;
+      border: 1px solid var(--border-soft);
+      box-shadow: 0 6px 18px rgba(0, 0, 0, 0.06);
+    }
+
+    .about-card h3 {
+      font-size: 1rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .about-stats {
+      display: flex;
+      justify-content: space-between;
+      gap: 0.75rem;
+      margin-top: 0.75rem;
+      font-size: 0.8rem;
+    }
+
+    .about-stat {
+      background: var(--primary-soft);
+      padding: 0.5rem 0.7rem;
+      border-radius: 0.75rem;
+      flex: 1;
+      text-align: center;
+    }
+
+    .about-stat strong {
+      display: block;
+      font-size: 1rem;
+    }
+
+    /* Contact section */
+    .contact-layout {
+      display: grid;
+      grid-template-columns: minmax(0, 2fr) minmax(0, 3fr);
+      gap: 2rem;
+    }
+
+    .contact-info p {
+      font-size: 0.9rem;
+      margin-bottom: 0.7rem;
+    }
+
+    .contact-row {
+      display: flex;
+      flex-direction: column;
+      gap: 0.4rem;
+      margin-top: 0.5rem;
+      font-size: 0.9rem;
+    }
+
+    .contact-label {
+      font-weight: 600;
+      color: var(--text-soft);
+    }
+
+    .contact-value a {
+      color: var(--primary-dark);
+      word-break: break-all;
+    }
+
+    form.contact-form {
+      background: var(--surface);
+      padding: 1.2rem;
+      border-radius: 1rem;
+      border: 1px solid var(--border-soft);
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.06);
+    }
+
+    .form-row {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 0.75rem;
+      margin-bottom: 0.75rem;
+    }
+
+    .form-group {
+      margin-bottom: 0.75rem;
+      font-size: 0.85rem;
+    }
+
+    .form-group label {
+      display: block;
+      margin-bottom: 0.3rem;
+      color: var(--text-soft);
+    }
+
+    .form-group input,
+    .form-group textarea {
+      width: 100%;
+      padding: 0.55rem 0.7rem;
+      border-radius: 0.6rem;
+      border: 1px solid var(--border-soft);
+      font-size: 0.85rem;
+      outline: none;
+      background: #fdfbff;
+      transition: border-color 0.2s ease, box-shadow 0.2s ease;
+      resize: vertical;
+    }
+
+    .form-group input:focus,
+    .form-group textarea:focus {
+      border-color: var(--primary);
+      box-shadow: 0 0 0 2px rgba(199, 107, 255, 0.2);
+      background: #ffffff;
+    }
+
+    .contact-footnote {
+      margin-top: 0.5rem;
+      font-size: 0.78rem;
+      color: var(--text-soft);
+    }
+
+    /* Instagram section */
+    .insta-section {
+      margin-top: 1.5rem;
+      text-align: center;
+      font-size: 0.9rem;
+      color: var(--text-soft);
+    }
+
+    .insta-link-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      margin-top: 0.6rem;
+      padding: 0.45rem 0.9rem;
+      border-radius: 999px;
+      border: 1px solid var(--primary);
+      background: #ffffff;
+      color: var(--primary-dark);
+      font-size: 0.85rem;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+
+    .insta-link-btn:hover {
+      background: var(--primary-soft);
+    }
+
+    /* Footer */
+    footer {
+      padding: 1rem 0 1.5rem;
+      font-size: 0.78rem;
+      text-align: center;
+      color: var(--text-soft);
+    }
+
+    /* Responsive */
+    @media (max-width: 900px) {
+      .hero-inner,
+      .about-layout,
+      .contact-layout {
+        grid-template-columns: minmax(0, 1fr);
+      }
+
+      .hero-image {
+        order: -1;
+      }
+
+      .nav {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.6rem;
+      }
+
+      .nav-actions {
+        width: 100%;
+        justify-content: flex-start;
+      }
+    }
+
+    @media (max-width: 700px) {
+      .categories-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .about-highlights {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+    }
+
+    @media (max-width: 480px) {
+      .categories-grid {
+        grid-template-columns: minmax(0, 1fr);
+      }
+
+      .hero-title {
+        font-size: 1.8rem;
+      }
+
+      .hero-badge-row {
+        flex-direction: column;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Header / Navbar -->
+  <header>
+    <div class="container nav">
+      <div class="brand">
+        <!-- Logo image in repo: /images/reveuse-logo.png -->
+        <img src="images/reveuse-logo.png" alt="Reveuse Treats logo" class="brand-logo-img" />
+        <div class="brand-text">
+          <h1>Reveuse Treats</h1>
+          <span>Home bakery · Pre-orders only · Customisation available</span>
+        </div>
+      </div>
+
+      <div class="nav-actions">
+        <button class="nav-btn" onclick="window.location.href='tel:+918754499266'">
+          <span class="icon">📞</span><span>Call</span>
+        </button>
+        <button class="nav-btn" onclick="window.open('https://wa.me/918754499266','_blank')">
+          <span class="icon">💬</span><span>Chat</span>
+        </button>
+        <button class="nav-btn" onclick="window.open('https://maps.google.com/?q=Reveuse+Treats','_blank')">
+          <span class="icon">📍</span><span>Location</span>
+        </button>
+        <button class="nav-btn" onclick="window.location.href='mailto:reveusetreats@gmail.com'">
+          <span class="icon">✉️</span><span>Mail</span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Hero -->
+  <section class="hero" id="home">
+    <div class="container hero-inner">
+      <div>
+        <h2 class="hero-title">
+          Candy‑coloured <span class="accent">custom treats</span> for every mood
+        </h2>
+        <p class="hero-subtitle">
+          Reveuse Treats is a home bakery specialising in aesthetic, personalised desserts made on pre-order so every box is created just for you.
+        </p>
+        <p class="hero-punch">
+          Home bakery · Pre-orders only · Customisation available for cakes, cupcakes and more.
+        </p>
+
+        <div class="hero-cta">
+          <button class="btn-primary" onclick="document.getElementById('categories').scrollIntoView({behavior:'smooth'});">
+            Explore Treat Categories
+          </button>
+          <button class="btn-outline" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'});">
+            Place a Pre‑Order
+          </button>
+        </div>
+
+        <div class="hero-badge-row">
+          <div class="hero-badge">Made-to-order home bakes</div>
+          <div class="hero-badge">Custom designs & themes</div>
+          <div class="hero-badge">Pre-order only · Limited slots</div>
+        </div>
+      </div>
+
+      <div class="hero-image">
+        <div class="hero-cake"></div>
+        <div class="hero-tag">
+          <span>🎀</span>
+          <span>Signature pastel custom cakes</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Categories + Items -->
+  <section id="categories">
+    <div class="container">
+      <div class="section-header">
+        <h2 class="section-title">Our Delights Menu</h2>
+        <p class="section-subtitle">
+          Delivery charge will be added. Extra charges for customisation (fondant, chocolate work, toppers, etc.).
+        </p>
+      </div>
+
+      <!-- Category buttons -->
+      <div class="categories-grid" id="categoryGrid">
+        <div class="category-card" data-category="halfKgCakes">
+          <div class="category-icon">🎂</div>
+          <div class="category-name">Half KG Cakes</div>
+          <div class="category-desc">Classic flavours in half kg size, perfect for small celebrations.</div>
+        </div>
+        <div class="category-card" data-category="oneKgCakes">
+          <div class="category-icon">🍰</div>
+          <div class="category-name">1 KG Cakes</div>
+          <div class="category-desc">For bigger gatherings and special occasions.</div>
+        </div>
+        <div class="category-card" data-category="brownies">
+          <div class="category-icon">🍫</div>
+          <div class="category-name">Brownies</div>
+          <div class="category-desc">Rich, chocolatey brownies baked fresh on order.</div>
+        </div>
+        <div class="category-card" data-category="cupcakesBento">
+          <div class="category-icon">🧁</div>
+          <div class="category-name">Cupcakes & Bento</div>
+          <div class="category-desc">Cupcakes, bento cakes and custom treats on request.</div>
+        </div>
+      </div>
+
+      <!-- Items list for selected category -->
+      <div id="categoryItemsWrapper" style="margin-top:2rem;">
+        <h3 id="itemsTitle" style="margin-bottom:0.75rem; display:none;">Items</h3>
+        <div id="categoryItems" style="display:none;"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- About Us -->
+  <section id="about">
+    <div class="container">
+      <div class="section-header">
+        <h2 class="section-title">About Reveuse Treats</h2>
+        <p class="section-subtitle">A cosy home bakery creating dreamy, customised treats on pre-order.</p>
+      </div>
+
+      <div class="about-layout">
+        <div class="about-text">
+          <p>
+            Reveuse Treats is a home-based bakery where every order is crafted fresh only for you. There is no display counter, no bulk production – just thoughtful, small-batch bakes made with care.
+          </p>
+          <p>
+            From pastel cakes and bento boxes to cupcakes with tiny messages, each treat is customised to match your theme, mood and occasion. You share your idea, and we bring it to life in frosting.
+          </p>
+          <p>
+            As a pre-order only setup, we work with limited slots so we can focus fully on quality, detailing and clean flavours in every box that leaves the kitchen.
+          </p>
+
+          <div class="about-highlights">
+            <div class="about-pill">Home bakery · Pre-orders only</div>
+            <div class="about-pill">Custom designs & colours</div>
+            <div class="about-pill">Pastel & minimal aesthetics</div>
+            <div class="about-pill">Made freshly for each order</div>
+            <div class="about-pill">Perfect for gifting & celebrations</div>
+            <div class="about-pill">Order details coordinated over WhatsApp</div>
+          </div>
+        </div>
+
+        <div class="about-card">
+          <h3>How pre-orders work</h3>
+          <p style="font-size:0.9rem;">
+            Share your date, theme, flavour preference and budget. We confirm availability, lock your slot and then send you a design / concept before baking your treat fresh on the event day.
+          </p>
+
+          <div class="about-stats">
+            <div class="about-stat">
+              <strong>Home</strong>
+              bakery setup
+            </div>
+            <div class="about-stat">
+              <strong>Custom</strong>
+              design focus
+            </div>
+            <div class="about-stat">
+              <strong>Limited</strong>
+              pre-order slots
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="insta-section">
+        <p>See our latest designs and flavour updates on Instagram.</p>
+        <button class="insta-link-btn" onclick="window.open('https://www.instagram.com/reveuse_treats','_blank')">
+          <span>📸</span>
+          <span>@reveuse_treats</span>
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact Us -->
+  <section id="contact">
+    <div class="container">
+      <div class="section-header">
+        <h2 class="section-title">Contact & Pre‑Orders</h2>
+        <p class="section-subtitle">Share your idea and date, and we will get back with availability and details.</p>
+      </div>
+
+      <div class="contact-layout">
+        <div class="contact-info">
+          <p>
+            For quickest response, send a WhatsApp message or fill out this form with your event date, type of treat and a brief idea of the design you have in mind.
+          </p>
+
+          <div class="contact-row">
+            <div class="contact-label">Contact No:</div>
+            <div class="contact-value">
+              <a href="tel:+918754499266">+91 87544 99266</a>
+            </div>
+          </div>
+
+          <div class="contact-row">
+            <div class="contact-label">Mail:</div>
+            <div class="contact-value">
+              <a href="mailto:reveusetreats@gmail.com">reveusetreats@gmail.com</a>
+            </div>
+          </div>
+        </div>
+
+        <form class="contact-form" onsubmit="handleSendMessage(event)">
+          <div class="form-row">
+            <div class="form-group">
+              <label for="name">Your Name</label>
+              <input type="text" id="name" placeholder="Enter your name" required />
+            </div>
+            <div class="form-group">
+              <label for="phone">Phone Number</label>
+              <input type="tel" id="phone" placeholder="Your contact number" />
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="eventDate">Event Date</label>
+            <input type="text" id="eventDate" placeholder="e.g. 20 March, evening" />
+          </div>
+
+          <div class="form-group">
+            <label for="message">Your Message</label>
+            <textarea id="message" rows="4" placeholder="Share treat type (cake / cupcakes / bento etc.), theme, flavour and budget..." required></textarea>
+          </div>
+
+          <button type="submit" class="btn-primary">Send WhatsApp Message</button>
+          <p class="contact-footnote">
+            This button opens WhatsApp with your details, addressed to Reveuse Treats. You can review and send it from there.
+          </p>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    © <span id="year"></span> Reveuse Treats · Home bakery · All rights reserved.
+  </footer>
+
+  <script>
+  // Auto-set current year
+  document.getElementById("year").textContent = new Date().getFullYear();
+
+  // ---------- Category items + WhatsApp order ----------
+
+  // Product data with images (files expected under /images/... in your GitHub repo)
+  const CATEGORY_ITEMS = {
+    halfKgCakes: [
+      { name: "Half KG Vanilla Cake", desc: "Soft vanilla sponge with simple frosting.", price: "₹350", img: "images/halfkg/vanilla.jpg" },
+      { name: "Half KG Strawberry Cake", desc: "Strawberry flavoured cake with cream frosting.", price: "₹350", img: "images/halfkg/strawberry.jpg" },
+      { name: "Half KG Pineapple Cake", desc: "Refreshing pineapple flavour with bits and cream.", price: "₹400", img: "images/halfkg/pineapple.jpg" },
+      { name: "Half KG Blackcurrant Cake", desc: "Fruity blackcurrant cake with a pretty finish.", price: "₹400", img: "images/halfkg/blackcurrant.jpg" },
+      { name: "Half KG Blueberry Cake", desc: "Blueberry cake with tangy-sweet notes.", price: "₹450", img: "images/halfkg/blueberry.jpg" },
+      { name: "Half KG Butterscotch Cake", desc: "Butterscotch cake with crunchy bits and caramel.", price: "₹450", img: "images/halfkg/butterscotch.jpg" },
+      { name: "Half KG Choco Truffle Cake", desc: "Rich chocolate sponge with truffle ganache.", price: "₹450", img: "images/halfkg/choco-truffle.jpg" },
+      { name: "Half KG Dutch Chocolate Cake", desc: "Intense Dutch cocoa chocolate cake.", price: "₹500", img: "images/halfkg/dutch-chocolate.jpg" },
+      { name: "Half KG Chocolate Strawberry Cake", desc: "Chocolate base with strawberry cream layers.", price: "₹500", img: "images/halfkg/choco-strawberry.jpg" },
+      { name: "Half KG Chocolate Caramel Cake", desc: "Chocolate cake with caramel layers and drizzle.", price: "₹500", img: "images/halfkg/choco-caramel.jpg" },
+      { name: "Half KG Mocha Chocolate Cake", desc: "Coffee and chocolate flavour combo for mocha lovers.", price: "₹550", img: "images/halfkg/mocha-chocolate.jpg" },
+      { name: "Half KG Red Velvet Cake", desc: "Classic red velvet cake with cream style frosting.", price: "₹550", img: "images/halfkg/red-velvet.jpg" },
+      { name: "Half KG Rainbow Cake", desc: "Colourful layered sponge cake for fun celebrations.", price: "₹550", img: "images/halfkg/rainbow.jpg" },
+      { name: "Half KG Black Forest Cake", desc: "Chocolate, cream and cherries in a classic combo.", price: "₹450", img: "images/halfkg/black-forest.jpg" },
+      { name: "Half KG White Forest Cake", desc: "Vanilla, cream and cherries with a light finish.", price: "₹450", img: "images/halfkg/white-forest.jpg" }
+    ],
+
+    oneKgCakes: [
+      { name: "1 KG Vanilla Cake", desc: "Soft vanilla sponge with simple frosting.", price: "₹550", img: "images/1kg/vanilla.jpg" },
+      { name: "1 KG Strawberry Cake", desc: "Strawberry flavoured cake with cream frosting.", price: "₹550", img: "images/1kg/strawberry.jpg" },
+      { name: "1 KG Pineapple Cake", desc: "Refreshing pineapple flavour with bits and cream.", price: "₹600", img: "images/1kg/pineapple.jpg" },
+      { name: "1 KG Blackcurrant Cake", desc: "Fruity blackcurrant cake with a pretty finish.", price: "₹600", img: "images/1kg/blackcurrant.jpg" },
+      { name: "1 KG Blueberry Cake", desc: "Blueberry cake with tangy-sweet notes.", price: "₹650", img: "images/1kg/blueberry.jpg" },
+      { name: "1 KG Butterscotch Cake", desc: "Butterscotch cake with crunchy bits and caramel.", price: "₹650", img: "images/1kg/butterscotch.jpg" },
+      { name: "1 KG Rose Milk Cake", desc: "Delicate rose milk flavoured cake with a pastel finish.", price: "₹650", img: "images/1kg/rosemilk.jpg" },
+      { name: "1 KG Choc Truffle Cake", desc: "Rich chocolate sponge with truffle ganache.", price: "₹750", img: "images/1kg/choco-truffle.jpg" },
+      { name: "1 KG Black Forest Cake", desc: "Chocolate, cream and cherries in a classic combo.", price: "₹650", img: "images/1kg/black-forest.jpg" },
+      { name: "1 KG White Forest Cake", desc: "Vanilla, cream and cherries with a light finish.", price: "₹700", img: "images/1kg/white-forest.jpg" },
+      { name: "1 KG Dutch Chocolate Cake", desc: "Intense Dutch cocoa chocolate cake.", price: "₹800", img: "images/1kg/dutch-chocolate.jpg" },
+      { name: "1 KG Chocolate Strawberry Cake", desc: "Chocolate base with strawberry cream layers.", price: "₹800", img: "images/1kg/choco-strawberry.jpg" },
+      { name: "1 KG Chocolate Caramel Cake", desc: "Chocolate cake with caramel layers and drizzle.", price: "₹800", img: "images/1kg/choco-caramel.jpg" },
+      { name: "1 KG Mocha Chocolate Cake", desc: "Coffee and chocolate flavour combo for mocha lovers.", price: "₹900", img: "images/1kg/mocha-chocolate.jpg" },
+      { name: "1 KG Red Velvet Cake", desc: "Classic red velvet cake with cream style frosting.", price: "₹900", img: "images/1kg/red-velvet.jpg" },
+      { name: "1 KG Rainbow Cake", desc: "Colourful layered sponge cake for fun celebrations.", price: "₹900", img: "images/1kg/rainbow.jpg" },
+      { name: "1 KG Rasmalai Cake", desc: "Indian fusion rasmalai cake soaked in flavoured milk.", price: "₹900", img: "images/1kg/rasmalai.jpg" }
+    ],
+
+    brownies: [
+      {
+        name: "Classic Fudge Brownies (6 pcs)",
+        desc: "Rich chocolate brownies with crackly top.",
+        price: "From ₹449",
+        img: "images/brownies/classic-6.jpg"
+      }
+    ],
+
+    cupcakesBento: [
+      {
+        name: "Cupcakes (Box of 4/6)",
+        desc: "Flavours of your choice, pastel frosting. Prices vary by box size.",
+        price: "Price on request",
+        img: "images/cupcakes/assorted.jpg"
+      },
+      {
+        name: "Bento Cakes",
+        desc: "Mini cakes for 1–2 people, custom text and colours.",
+        price: "Starting from ₹200",
+        img: "images/bento/bento-basic.jpg"
+      },
+      {
+        name: "Custom Celebration Orders",
+        desc: "Special designs for parties, events and gifting.",
+        price: "Price on request",
+        img: "images/custom/custom-orders.jpg"
+      }
+    ]
+  };
+
+  const ownerNumber = "918754499266";
+
+  function loadCategoryItems(categoryKey, categoryLabel) {
+    const itemsTitle = document.getElementById("itemsTitle");
+    const itemsContainer = document.getElementById("categoryItems");
+    const items = CATEGORY_ITEMS[categoryKey] || [];
+
+    if (!items.length) {
+      itemsTitle.style.display = "block";
+      itemsTitle.textContent = `Items in ${categoryLabel}`;
+      itemsContainer.style.display = "block";
+      itemsContainer.className = "";
+      itemsContainer.innerHTML =
+        "<p style='font-size:0.9rem;color:var(--text-soft);'>Items will be updated soon. Please contact on WhatsApp for details.</p>";
+      return;
+    }
+
+    itemsTitle.style.display = "block";
+    itemsTitle.textContent = `Items in ${categoryLabel}`;
+    itemsContainer.style.display = "grid";
+    itemsContainer.className = "items-grid";
+
+    itemsContainer.innerHTML = items
+      .map(
+        (item, index) => `
+      <div class="item-card">
+        <div>
+          <div class="item-image-wrapper">
+            <img src="${item.img}" alt="${item.name}">
+          </div>
+          <div class="item-name">${item.name}</div>
+          <div class="item-desc">${item.desc}</div>
+          <div class="item-price">Starting from <span>${item.price}</span></div>
+        </div>
+        <div class="item-actions">
+          <button class="btn-primary" style="padding:0.45rem 0.9rem;font-size:0.82rem;"
+            onclick="placeOrder('${categoryKey}', ${index})">
+            Place Order on WhatsApp
+          </button>
+        </div>
+      </div>
+    `
+      )
+      .join("");
+  }
+
+  function placeOrder(categoryKey, itemIndex) {
+    const item = (CATEGORY_ITEMS[categoryKey] || [])[itemIndex];
+    if (!item) return;
+    const message = `Hello Reveuse Treats, I would like to order "${item.name}".`;
+    const encodedMessage = encodeURIComponent(message);
+    const waUrl = "https://wa.me/" + ownerNumber + "?text=" + encodedMessage;
+    window.open(waUrl, "_blank");
+  }
+
+  document.addEventListener("DOMContentLoaded", () => {
+    const categoryCards = document.querySelectorAll("#categoryGrid .category-card");
+    categoryCards.forEach(card => {
+      card.addEventListener("click", () => {
+        const key = card.getAttribute("data-category");
+        const label = card.querySelector(".category-name").textContent.trim();
+        loadCategoryItems(key, label);
+        document
+          .getElementById("categoryItemsWrapper")
+          .scrollIntoView({ behavior: "smooth" });
+      });
+    });
+  });
+
+  // ---------- Contact form WhatsApp ----------
+  function handleSendMessage(event) {
+    event.preventDefault();
+    const name = document.getElementById("name").value.trim();
+    const phone = document.getElementById("phone").value.trim();
+    const eventDate = document.getElementById("eventDate").value.trim();
+    const message = document.getElementById("message").value.trim();
+
+    if (!message) {
+      alert("Please enter a message before sending.");
+      return;
+    }
+
+    let finalMessage = "New pre-order enquiry for Reveuse Treats:%0A%0A";
+    if (name) finalMessage += "Name: " + encodeURIComponent(name) + "%0A";
+    if (phone) finalMessage += "Phone: " + encodeURIComponent(phone) + "%0A";
+    if (eventDate) finalMessage += "Event Date: " + encodeURIComponent(eventDate) + "%0A";
+    finalMessage += "%0AMessage: " + encodeURIComponent(message);
+
+    const waUrl = "https://wa.me/" + ownerNumber + "?text=" + finalMessage;
+    window.open(waUrl, "_blank");
+  }
+  </script>
+</body>
+</html>
